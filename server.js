@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import authRoutes from "./routes/authRoutes.js";
-import userRoutes from "./routes/userRoutes.js";  // <-- matches your file name
+import authRoutes from "/routes/authRoutes.js";
+import userRoutes from "/routes/userRoutes.js";  
 
 dotenv.config();
 
