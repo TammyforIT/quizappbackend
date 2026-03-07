@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import authRoutes from "./routes/authroutes.js";
-import userRoutes from "./routes/userroutes.js";
+import authRoutes from "./routes/Authroutes.js";
+import userRoutes from "./routes/Userroutes.js";  // <-- matches your file name
 
 dotenv.config();
 
@@ -15,8 +15,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
-
+app.use("/api/user", userRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
