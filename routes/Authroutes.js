@@ -8,7 +8,7 @@ router.post("/register", async (req, res) => {
     if (existing) {
       return res.status(400).json({ error: "An account with that email is already created" });
     }
-
+//rename
     // HASH PASSWORD
     const hashedPassword = await bcrypt.hash(password, 10);
 
