@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import authroutes from "./routes/authroutes.js";
+import authroutest from "./routes/authroutest.js";
 
 dotenv.config();
 
