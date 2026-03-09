@@ -44,8 +44,12 @@ router.post("/login", async (req, res) => {
   try {
     const { identifier, password } = req.body;
 
+    // FIXED: search by username OR email
     const user = await User.findOne({
-      $or: [{ username: identifier }, { email: identifier }]
+      $or: [
+        { username: identifier },
+        { email: identifier }
+      ]
     });
 
     if (!user)
@@ -55,6 +59,7 @@ router.post("/login", async (req, res) => {
     if (!match)
       return res.status(400).json({ message: "Incorrect password" });
 
+    // FIXED: return full user object
     return res.json({
       message: "Login successful",
       user: {
