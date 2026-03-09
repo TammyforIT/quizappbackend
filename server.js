@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error("MongoDB error:", err));
 
 
-app.use("/api/auth", AuthRoutes);
+app.use("/api/auth", authroutes);
 
 app.use((err, req, res, next) => {
   console.error("SERVER ERROR:", err);
