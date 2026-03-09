@@ -1,26 +1,36 @@
 import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
+import mongoose from "mongoose";
 import dotenv from "dotenv";
-
-import authRoutes from "./routes/authroutes.js";
-import userRoutes from "./routes/userroutes.js";  
+import AuthRoutes from "./routes/AuthRoutes.js";
 
 dotenv.config();
 
 const app = express();
 
-app.use(cors());
+
+app.use(cors({
+  origin: "https://quizappfrontend-fn4m.onrender.com",
+  credentials: true
+}));
+
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Routes
-app.use("/api/auth", authRoutes);
-app.use("/api/user", userRoutes);
 
-mongoose
-  .connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log("MongoDB connection error:", err));
+  .catch(err => console.error("MongoDB error:", err));
 
-const PORT = process.env.PORT || 5000;
+
+app.use("/api/auth", AuthRoutes);
+
+app.use((err, req, res, next) => {
+  console.error("SERVER ERROR:", err);
+  res.status(500).json({ message: "Server error", error: err.message });
+});
+
+
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
