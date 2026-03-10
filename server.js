@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, "frontend/dist")));
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
 });
-
+//verion 5 use all
 
 // ERROR HANDLER
 app.use((err, req, res, next) => {
