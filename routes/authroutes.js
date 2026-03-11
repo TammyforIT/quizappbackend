@@ -31,7 +31,16 @@ router.post("/register", async (req, res) => {
       password: hashedPassword
     });
 
-    return res.json({ message: "User registered", user });
+    // ⭐ FIXED: return a CLEAN user object (same as login)
+    return res.json({
+      message: "User registered",
+      user: {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        bio: user.bio || ""
+      }
+    });
 
   } catch (err) {
     console.error("REGISTER ERROR:", err);
