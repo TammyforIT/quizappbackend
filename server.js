@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 app.use("/api/auth", authroutes);   // register, login
-app.use("/api/user", userRoutes);   
+app.use("/api/user", Userroutes);   
 
 // SERVE FRONTEND BUILD
 const __dirname = path.resolve();
