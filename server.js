@@ -11,7 +11,7 @@ dotenv.config();
 
 const app = express();
 
-// CORS
+
 app.use(cors({
   origin: "https://quizappfrontend-fn4m.onrender.com",
   credentials: true
