@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import path from "path";
 
-import Useroutes from "./routes/Userroutes.js";  
+import Userroutes from "./routes/Userroutes.js";  
 import authroutes from "./routes/authroutes.js";   
 
 dotenv.config();
