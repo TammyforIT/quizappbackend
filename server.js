@@ -31,11 +31,11 @@ app.use("/api/user", Userroutes);
 // SERVE FRONTEND BUILD
 const __dirname = path.resolve();
 
-// IMPORTANT: backend/server.js → go UP one folder → into frontend/dist
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+app.use(express.static(path.join(__dirname, "src/frontend/dist")));
 
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+  res.sendFile(path.join(__dirname, "src/frontend/dist/index.html"));
 });
 
 // ERROR HANDLER
