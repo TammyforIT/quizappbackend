@@ -4,8 +4,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import path from "path";
 
-import Userroutes from "./routes/Userroutes.js";  
-import authroutes from "./routes/authroutes.js";   
+import Userroutes from "./routes/Userroutes.js";
+import authroutes from "./routes/authroutes.js";
 
 dotenv.config();
 
@@ -31,7 +31,7 @@ app.use("/api/user", Userroutes);
 // SERVE FRONTEND BUILD
 const __dirname = path.resolve();
 
-
+// IMPORTANT: backend/server.js → go UP one folder → into frontend/dist
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
 app.use((req, res) => {
