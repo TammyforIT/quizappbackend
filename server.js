@@ -25,16 +25,17 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("MongoDB error:", err));
 
-
-app.use("/api/auth", authroutes);   // register, login
-app.use("/api/user", Userroutes);   
+app.use("/api/auth", authroutes);
+app.use("/api/user", Userroutes);
 
 // SERVE FRONTEND BUILD
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });
 
 // ERROR HANDLER
