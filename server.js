@@ -4,7 +4,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import path from "path";
 
-import authroutes from "./routes/authroutes.js";
+import userRoutes from "./routes/userroutes.js";   // ⭐ USER ROUTES
+import authroutes from "./routes/authroutes.js";   // ⭐ AUTH ROUTES
 
 dotenv.config();
 
@@ -24,8 +25,9 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("MongoDB error:", err));
 
-// API routes
-app.use("/api/auth", authroutes);
+
+app.use("/api/auth", authroutes);   // register, login
+app.use("/api/user", userRoutes);   
 
 // SERVE FRONTEND BUILD
 const __dirname = path.resolve();
@@ -34,7 +36,6 @@ app.use(express.static(path.join(__dirname, "frontend/dist")));
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
 });
-//verion 5 use all
 
 // ERROR HANDLER
 app.use((err, req, res, next) => {

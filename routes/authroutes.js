@@ -31,7 +31,6 @@ router.post("/register", async (req, res) => {
       password: hashedPassword
     });
 
-    // ⭐ FIXED: return a CLEAN user object (same as login)
     return res.json({
       message: "User registered",
       user: {
@@ -80,25 +79,6 @@ router.post("/login", async (req, res) => {
   } catch (err) {
     console.error("LOGIN ERROR:", err);
     res.status(500).json({ message: "Login failed", error: err.message });
-  }
-});
-
-// DELETE ACCOUNT
-router.delete("/delete/:id", async (req, res) => {
-  try {
-    const userId = req.params.id;
-
-    const deletedUser = await User.findByIdAndDelete(userId);
-
-    if (!deletedUser) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    return res.json({ message: "Account deleted successfully" });
-
-  } catch (err) {
-    console.error("DELETE ERROR:", err);
-    return res.status(500).json({ message: "Delete failed", error: err.message });
   }
 });
 
