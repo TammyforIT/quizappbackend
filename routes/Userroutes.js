@@ -3,7 +3,7 @@ import User from "../models/User.js";
 
 const router = express.Router();
 
-// GET USER INFO
+
 router.get("/me", async (req, res) => {
   try {
     const user = await User.findById(req.query.id);
